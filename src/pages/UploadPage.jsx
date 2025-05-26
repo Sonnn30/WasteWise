@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-export function Upload() {
+export default function Upload() {
   return (
     <>
-
+    ini upload
     </>
   );
 }
