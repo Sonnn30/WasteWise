@@ -5,14 +5,16 @@ import Search  from './pages/SearchPage'
 import SearchMaterial from './pages/SearchByMaterial'
 import Upload from './pages/UploadPage'
 import Layout from './Layout'
+import SignUp from './pages/SignUp'
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Home />} /> {/* ini penting! */}
+          <Route index element={<Home />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/sign-up' element={<SignUp />} />
           <Route path='/search' element={<Search />} />
           <Route path='/searchmaterial' element={<SearchMaterial />} />
           <Route path='/upload' element={<Upload />} />
