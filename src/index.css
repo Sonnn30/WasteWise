@@ -7,3 +7,16 @@
   font-family: "Poppins", sans-serif;
   font-style: normal;    
 }
+
+
+@font-face {
+  font-family: 'Janda';
+  src: url('/JandaManateeSolid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.janda-font {
+  font-family: 'Janda', sans-serif;
+}
