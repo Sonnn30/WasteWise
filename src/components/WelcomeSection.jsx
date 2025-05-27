@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default function WelcomeSection() {
   return (
@@ -18,9 +19,11 @@ export default function WelcomeSection() {
         </p>
 
       <div className="flex justify-center lg:justify-start ml-120 mt-15">
-        <button className="bg-green-700 text-white text-[30px] font-semibold px-4 py-1 rounded-2xl hover:bg-green-800 transition duration-300">
+        <Link to="/login">
+        <button className="bg-green-700 text-white text-[30px] font-semibold px-4 py-1 rounded-2xl hover:bg-green-800 transition duration-300 cursor-pointer">
           Let’s Begin
         </button>
+        </Link>
       </div>
       </div>
 
