@@ -7,13 +7,24 @@ import RecommendVid from "../components/RecommendVid";
 export  default function SearchMaterial() {
   return (
     <>
-    <SearchAndHead/>
+      <div className="flex mb-20">
+        {/* Kiri: Konten utama */}
+        <div className="flex-grow">
+          <SearchAndHead />
+          <Desc />
+          <Comment />
+        </div>
+        <div className="bg-gray-500 w-[3px] mr-25 h-[1200px] mt-10">
 
-    <Desc/>
+        </div>
 
-    <Comment/>
+        {/* Kanan: Rekomendasi video */}
+        <div className="w-[500px]">
+          <RecommendVid />
+        </div>
+      </div>
 
-    <RecommendVid/>
+
 
     </>
   );
