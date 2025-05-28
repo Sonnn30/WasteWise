@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SearchAndHead from "../components/SearchAndHead";
+import VidAndHead from "../components/VidAndHead";
 import Desc from "../components/Desc";
 import Comment from "../components/comment";
 import RecommendVid from "../components/RecommendVid";
@@ -10,7 +10,7 @@ export  default function SearchMaterial() {
       <div className="flex mb-20">
         {/* Kiri: Konten utama */}
         <div className="flex-grow">
-          <SearchAndHead />
+          <VidAndHead />
           <Desc />
           <Comment />
         </div>
