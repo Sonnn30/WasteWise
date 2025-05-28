@@ -8,7 +8,6 @@ export  default function SearchMaterial() {
   return (
     <>
       <div className="flex mb-20">
-        {/* Kiri: Konten utama */}
         <div className="flex-grow">
           <VidAndHead />
           <Desc />
@@ -18,7 +17,7 @@ export  default function SearchMaterial() {
 
         </div>
 
-        {/* Kanan: Rekomendasi video */}
+        
         <div className="w-[500px]">
           <RecommendVid />
         </div>

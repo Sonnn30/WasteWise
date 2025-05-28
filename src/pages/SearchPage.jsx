@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
-import SearchAndHead from "../components/SearchAndHead"
 import BrowseByMaterial from "../components/BrowseByMaterial";
-import LastestVid from "../components/lastestVid";
+import LastestVid from "../components/LastestVid";
 
-export  default function Search() {
+export default function Search() {
   return (
     <>
-    ini search
+      {/* Hapus SearchAndHead jika tidak mau tampil di awal */}
+      {/* <SearchAndHead /> */}
 
-    <SearchAndHead/>
-    <BrowseByMaterial/>
-    <LastestVid/>
+      <BrowseByMaterial />
+      <LastestVid />
 
-
-    <div className="m-5">
-      <Link to="/searchmaterial"><p className="bg-gray-700 w-[280px] m-5 p-2 text-white rounded">Page Video dan beserta comment section</p></Link>
-    </div>
+      {/* Tombol navigasi ke halaman detail */}
+      <div className="flex justify-center mt-10">
+        <Link to="/searchmaterial">
+          <button className="bg-green-700 hover:bg-green-800 text-white text-lg font-semibold px-6 py-3 rounded-lg shadow-md transition">
+            View Video & Comments
+          </button>
+        </Link>
+      </div>
     </>
   );
 }

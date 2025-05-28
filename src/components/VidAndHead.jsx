@@ -13,7 +13,6 @@ export default function VidAndHead() {
             </span>
         </div>
 
-        {/* Embedded Video */}
         <div className="relative w-full max-w-3xl aspect-video rounded-lg overflow-hidden">
             <iframe
             className="w-full h-full"
