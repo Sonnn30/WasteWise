@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function RecycleExp() {
   return (
-        <div className="py-10 px-4 mb-10">
+        <div className="py-10 px-4 mb-20">
         {/* Judul Section */}
         <div className="flex justify-center mb-10">
             <h2 className="text-[45px] font-bold relative mb-10 text-shadow-lg text-center">
