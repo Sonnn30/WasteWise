@@ -6,7 +6,7 @@ import DescUpload from "../components/DescUpload";
 export default function Upload() {
   return (
     <>
-    ini upload
+    
 
     <Uploadheader/>
     <UploadFile/>
