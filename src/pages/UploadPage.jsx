@@ -1,16 +1,12 @@
-import { Link } from "react-router-dom";
-import Uploadheader from "../components/Uploadheader";
-import UploadFile from "../components/UploadFile";
-import DescUpload from "../components/DescUpload";
+import React from 'react';
+import UploadHeader from '../components/UploadHeader';
+import UploadFile from '../components/UploadFile';
 
-export default function Upload() {
+export default function UploadPage() {
   return (
-    <>
-    
-
-    <Uploadheader/>
-    <UploadFile/>
-    <DescUpload/>
-    </>
+    <div className="min-h-screen bg-gray-50 pb-10">
+      <UploadHeader />
+      <UploadFile />
+    </div>
   );
 }

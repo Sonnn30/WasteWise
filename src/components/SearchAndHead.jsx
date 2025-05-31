@@ -1,31 +1,33 @@
 import React from 'react';
 
-export default function VideoCard() {
+export default function SearchAndHead() {
   return (
-<div className="w-[900px] mx-10 px-4 md:px-20">
-  
-  <div className="flex flex-col items-start -mb-2">
-    <h2 className="text-[32px] md:text-[48px] font-bold relative text-black text-left">
-      Turn Plastic Into A Wallet
-      <span className="block w-[290px] h-[4px] bg-[#AED581] -mt-1"></span>
-    </h2>
-    <span className="text-[14px] bg-gray-200 mx-159 px-3 py-1 rounded-md text-gray-700 mb-4">
-      24/01/2025
-    </span>
-  </div>
-
- 
-  <div className="relative w-full max-w-3xl aspect-video rounded-lg overflow-hidden">
-    <iframe
-      className="w-full h-full"
-      src="https://www.youtube.com/embed/j-7grMXIXs0?si=WI_oXqQlAm0EGLOt"
-      title="Turn Plastic Into A Wallet"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
-  </div>
-</div>
-
-
+    <div className="bg-white p-8 md:p-12 shadow-md mb-10">
+     
+      <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-6 text-left">
+        Find Your New Recycling Idea
+      </h1>
+      <div className="relative max-w-2xl"> 
+        <input
+          type="text"
+          placeholder="Q what do you have in mind.."
+          className="w-full py-3 pl-12 pr-4 rounded-full border-2 border-gray-300 focus:outline-none focus:border-green-500 text-lg shadow-sm"
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </div>
+    </div>
   );
 }
