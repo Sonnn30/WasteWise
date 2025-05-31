@@ -1,24 +1,23 @@
-import { Link } from "react-router-dom";
-import BrowseByMaterial from "../components/BrowseByMaterial";
-import LastestVid from "../components/LastestVid";
+import React from 'react';
+import SearchAndHead from '../components/SearchAndHead'; // Komponen Search dan Header
+import BrowseByMaterial from '../components/BrowseByMaterial'; // Komponen Kategori Material
+import RecommendVid from '../components/RecommendVid'; // Diadaptasi untuk Video Tutorials
 
-export default function Search() {
+export default function SearchPage() {
   return (
-    <>
-      {/* Hapus SearchAndHead jika tidak mau tampil di awal */}
-      {/* <SearchAndHead /> */}
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      
+      <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-5">
+        <SearchAndHead />
 
-      <BrowseByMaterial />
-      <LastestVid />
+        <BrowseByMaterial />
 
-      {/* Tombol navigasi ke halaman detail */}
-      <div className="flex justify-center mt-10">
-        <Link to="/searchmaterial">
-          <button className="bg-green-700 hover:bg-green-800 text-white text-lg font-semibold px-6 py-3 rounded-lg shadow-md transition">
-            View Video & Comments
-          </button>
-        </Link>
+        <div className="container mx-auto mt-10">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Our Latest Video Tutorials</h2>
+          <RecommendVid isLatestTutorials={true} />
+        </div>
       </div>
-    </>
+
+    </div>
   );
 }

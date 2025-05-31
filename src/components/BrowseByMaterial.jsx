@@ -1,32 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const materials = [
-  { id: 'plastic', name: 'Plastic' },
-  { id: 'paper', name: 'Paper' },
-  { id: 'metal', name: 'Metal' },
-  { id: 'glass', name: 'Glass' },
-  { id: 'fabric', name: 'Fabric' },
-  { id: 'wood', name: 'Wood' },
-  { id: 'electronics', name: 'Electronics' },
-];
-
 export default function BrowseByMaterial() {
-  return (
-    <div className="mx-10 my-10 p-8 bg-green-50 rounded-2xl shadow-md max-w-5xl">
-      <h2 className="text-4xl font-bold text-green-900 mb-6">Browse Projects by Material</h2>
-      <p className="text-green-800 mb-8 text-lg max-w-xl">
-        Select a material below to explore eco-friendly projects made from that material. Find inspiration and learn how to recycle creatively!
-      </p>
+  const materials = [
+    { name: 'Plastic', icon: '/icons/plastic-icon.svg' },
+    { name: 'Paper', icon: '/icons/paper-icon.svg' },
+    { name: 'Wood', icon: '/icons/wood-icon.svg' },
+    { name: 'Electronic', icon: '/icons/electronic-icon.svg' },
+    { name: 'Fabric', icon: '/icons/fabric-icon.svg' },
+    { name: 'Iron', icon: '/icons/iron-icon.svg' },
+    { name: 'Glass', icon: '/icons/glass-icon.svg' },
+    { name: 'Rubber', icon: '/icons/rubber-icon.svg' },
+  ];
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {materials.map(material => (
+  return (
+    <div className="py-10"> 
+      <h2 className="bg-black text-white text-3xl font-bold px-4 py-2 mb-8 inline-block text-left rounded-r-lg">
+        Browse by Material
+      </h2>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-items-start">
+        {materials.map((material) => (
           <Link
-            key={material.id}
-            to={`/searchmaterial?material=${material.id}`}
-            className="bg-green-700 hover:bg-green-800 text-white text-center py-4 rounded-xl font-semibold shadow-md transition"
+            key={material.name}
+            to="/searchmaterial" 
+            state={{ materialType: material.name.toLowerCase() }} 
+            className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 w-full max-w-[150px] aspect-square justify-center"
           >
-            {material.name}
+            <img src={material.icon} alt={material.name} className="w-20 h-20 mb-3 object-contain" />
+            <span className="text-gray-800 font-semibold text-center">{material.name}</span>
           </Link>
         ))}
       </div>
