@@ -13,7 +13,7 @@ export default function SearchMaterial() {
       title: 'Recycle Plastic Bottle To Coin Storage',
       material: 'Plastic',
       rating: 4.0,
-      thumbnail: '/plastic-thumbnails/coin-storage.jpeg',
+      thumbnail: 'thumbnail.svg',
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ export default function SearchMaterial() {
       title: 'Upcycle: Tote Bag Becomes Wall Organizer!',
       material: 'Plastic',
       rating: 4.3,
-      thumbnail: '/plastic-thumbnails/tote-bag-organizer.jpeg',
+      thumbnail: 'thumbnail.svg',
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ export default function SearchMaterial() {
       title: 'Easy Lamp With Plastic Bottle',
       material: 'Plastic',
       rating: 4.5,
-      thumbnail: '/plastic-thumbnails/plastic-lamp.jpeg',
+      thumbnail: 'thumbnail.svg',
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ export default function SearchMaterial() {
       title: 'Turn Plastic Into A Wallet',
       material: 'Plastic',
       rating: 4.7,
-      thumbnail: '/plastic-thumbnails/plastic-wallet.jpeg',
+      thumbnail: 'thumbnail.svg',
     },
     {
       id: 5,
@@ -49,7 +49,7 @@ export default function SearchMaterial() {
       title: 'Changing Plastic Bags into a Laptop Bag',
       material: 'Plastic',
       rating: 4.7,
-      thumbnail: '/plastic-thumbnails/laptop-bag.jpeg',
+      thumbnail: 'thumbnail.svg',
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ export default function SearchMaterial() {
       title: 'Recycle Plastic Bottles Flower Vase Easy',
       material: 'Plastic',
       rating: 4.2,
-      thumbnail: '/plastic-thumbnails/flower-vase.jpeg',
+      thumbnail: 'thumbnail.svg'
     },
   ];
 
@@ -69,9 +69,9 @@ export default function SearchMaterial() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen flex flex-col mb-10">
       {/* Header dan Search Bar untuk Halaman Material Detail */}
-      <div className="bg-white p-8 md:p-12 shadow-md mb-10">
+      <div className="bg-white p-8 md:p-12 -mb-10">
         {/* Logo WasteWise DIHAPUS dari sini, diasumsikan ada di Layout/Navbar */}
         {/* <img src="/LogoWasteWise.svg" alt="WasteWise Logo" className="mb-6 w-32" /> */}
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-6 text-left">
@@ -123,9 +123,11 @@ export default function SearchMaterial() {
                 <h3 className="text-md font-semibold text-gray-800 mb-1">{video.title}</h3>
                 <p className="text-xs text-gray-600 mb-3">Material: {video.material}</p>
                 <div className="flex items-center justify-between">
+                  <Link to='/video'>
                   <button className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition">
                     Watch Now
                   </button>
+                  </Link>
                   <span className="text-sm text-yellow-500 font-bold">⭐ {video.rating}</span>
                 </div>
               </div>

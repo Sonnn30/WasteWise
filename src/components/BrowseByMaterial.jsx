@@ -3,32 +3,38 @@ import { Link } from 'react-router-dom';
 
 export default function BrowseByMaterial() {
   const materials = [
-    { name: 'Plastic', icon: '/icons/plastic-icon.svg' },
-    { name: 'Paper', icon: '/icons/paper-icon.svg' },
-    { name: 'Wood', icon: '/icons/wood-icon.svg' },
-    { name: 'Electronic', icon: '/icons/electronic-icon.svg' },
-    { name: 'Fabric', icon: '/icons/fabric-icon.svg' },
-    { name: 'Iron', icon: '/icons/iron-icon.svg' },
-    { name: 'Glass', icon: '/icons/glass-icon.svg' },
-    { name: 'Rubber', icon: '/icons/rubber-icon.svg' },
+    { name: 'Plastic', icon: 'Plastic.svg' },
+    { name: 'Paper', icon: 'Paper.svg' },
+    { name: 'Wood', icon: 'Wood.svg' },
+    { name: 'Electronic', icon: 'Electronic.svg' },
+    { name: 'Fabric', icon: 'Fabric.svg' },
+    { name: 'Iron', icon: 'Iron.svg' },
+    { name: 'Glass', icon: 'Glass.svg' },
+    { name: 'Rubber', icon: 'Rubber.svg' },
   ];
 
   return (
-    <div className="py-10"> 
-      <h2 className="bg-black text-white text-3xl font-bold px-4 py-2 mb-8 inline-block text-left rounded-r-lg">
+    <div className="p-10 -mt-20"> 
+      <h2 className="bg-gray-700 rounded-4xl text-white text-xl font-bold px-4 py-2 mb-8 inline-block text-left">
         Browse by Material
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-items-start">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {materials.map((material) => (
           <Link
             key={material.name}
-            to="/searchmaterial" 
-            state={{ materialType: material.name.toLowerCase() }} 
-            className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 w-full max-w-[150px] aspect-square justify-center"
+            to="/searchmaterial"
+            state={{ materialType: material.name.toLowerCase() }}
+            className="w-[206px] flex flex-col justify-between"
           >
-            <img src={material.icon} alt={material.name} className="w-20 h-20 mb-3 object-contain" />
-            <span className="text-gray-800 font-semibold text-center">{material.name}</span>
+            <img
+              src={material.icon}
+              alt={material.name}
+              className=""
+            />
+            <div className="py-2 mt-2 text-center border-3 rounded-4xl border-black font-semibold">
+              {material.name}
+            </div>
           </Link>
         ))}
       </div>
