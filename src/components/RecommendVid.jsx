@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function RecommendVid({ isLatestTutorials }) {
-  const defaultVideos = [
+  const latestTutorialVideos = [
     {
       id: 1,
       uploader: 'LookNam',
@@ -9,7 +10,7 @@ export default function RecommendVid({ isLatestTutorials }) {
       title: 'Recycle Plastic Bottles Flower Vase Easy',
       material: 'Plastic',
       rating: 4.2,
-      thumbnail: '/thumbnail.svg', 
+      thumbnail: 'dummysampah.svg', 
     },
     {
       id: 2,
@@ -18,7 +19,7 @@ export default function RecommendVid({ isLatestTutorials }) {
       title: 'Changing Plastic Bags into a Laptop Bag',
       material: 'Plastic',
       rating: 4.7,
-      thumbnail: '/thumbnail.svg',
+      thumbnail: 'dummysampah.svg',
     },
     {
       id: 3,
@@ -27,45 +28,16 @@ export default function RecommendVid({ isLatestTutorials }) {
       title: 'Upcycle: Tote Bag Becomes Wall Organizer!',
       material: 'Kain (polypropylene)',
       rating: 4.5,
-      thumbnail: '/thumbnail.svg',
+      thumbnail: 'dummysampah.svg',
     },
   ];
 
   // Our Latest Video Tutorials
-  const latestTutorialVideos = [
-    {
-      id: 101,
-      uploader: 'Nixon Raine',
-      date: '23/04/2025',
-      title: 'Upcycle: Tote Bag Becomes Wall Organizer!',
-      material: 'Kain (polypropylene)',
-      rating: 4.5,
-      thumbnail: '/tote-bag-thumbnail.svg', 
-    },
-    {
-      id: 102,
-      uploader: 'Nixon Raine',
-      date: '23/04/2025',
-      title: 'Upcycle: Tote Bag Becomes Wall Organizer!',
-      material: 'Kain (polypropylene)',
-      rating: 4.5,
-      thumbnail: '/tote-bag-thumbnail.svg',
-    },
-    {
-      id: 103,
-      uploader: 'Nixon Raine',
-      date: '23/04/2025',
-      title: 'Upcycle: Tote Bag Becomes Wall Organizer!',
-      material: 'Kain (polypropylene)',
-      rating: 4.5,
-      thumbnail: '/tote-bag-thumbnail.svg',
-    },
-  ];
 
   const videosToDisplay = isLatestTutorials ? latestTutorialVideos : defaultVideos;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
       {videosToDisplay.map((video) => (
         <div key={video.id} className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-4 pb-2">
@@ -81,9 +53,11 @@ export default function RecommendVid({ isLatestTutorials }) {
             <h3 className="text-md font-semibold text-gray-800 mb-1">{video.title}</h3>
             <p className="text-xs text-gray-600 mb-3">Material: {video.material}</p>
             <div className="flex items-center justify-between">
+              <Link to='/video'>
               <button className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition">
                 Watch Now
               </button>
+              </Link>
               <span className="text-sm text-yellow-500 font-bold">⭐ {video.rating}</span>
             </div>
           </div>

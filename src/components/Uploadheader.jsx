@@ -11,7 +11,7 @@ export default function UploadHeader() {
         </p>
       </div>
       <div className="flex-shrink-0">
-        <img src="/earth-recycle-icon.svg" alt="Earth Recycle Icon" className="w-48 h-48 object-contain" />
+        <img src="recycle 1.svg" alt="Earth Recycle Icon" className="w-48 h-48 object-contain" />
       </div>
     </div>
   );
