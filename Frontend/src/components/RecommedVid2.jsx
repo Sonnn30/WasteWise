@@ -1,35 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function RecommedVid2() {
-      const videos = [
-    {
-      id: 1,
-      uploader: 'LookNam',
-      date: '08/04/2025',
-      title: 'Recycle Plastic Bottles Flower Vase Easy',
-      material: 'Plastic',
-      rating: 4.2,
-      thumbnail: 'thumbnail.svg', // ganti dengan gambar yang kamu punya
-    },
-    {
-      id: 2,
-      uploader: 'HomeMade',
-      date: '26/03/2025',
-      title: 'Changing Plastic Bags into a Laptop Bag',
-      material: 'Plastic',
-      rating: 4.7,
-      thumbnail: 'thumbnail.svg',
-    },
-    {
-      id: 3,
-      uploader: 'Nixon Raine',
-      date: '23/04/2025',
-      title: 'Upcycle: Tote Bag Becomes Wall Organizer!',
-      material: 'Kain (polypropylene)',
-      rating: 4.5,
-      thumbnail: 'thumbnail.svg',
-    },
-  ];
+export default function RecommedVid2({ material }) {
+  const [videos, setVideos] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!material) return;
+
+    fetch(`http://localhost:5000/api/videos?material=${material}`)
+      .then(res => res.json())
+      .then(data => setVideos(data))
+      .catch(err => console.error('Failed to fetch videos:', err));
+  }, [material]); // refetch setiap material berubah
+
+  const handleWatchNow = (id) => {
+    navigate(`/watch/${id}`);
+  };
+
   return (
     <div className="pl-4 border-gray-400 mt-20 mr-30 -mx-15">
       {videos.map((video) => (
@@ -40,11 +28,16 @@ export default function RecommedVid2() {
           <p className="text-sm font-semibold">{video.title}</p>
           <p className="text-xs text-gray-600">Material: {video.material}</p>
           <div className="flex items-center justify-between mt-2">
-            <button className="bg-green-600 text-white px-3 py-1 rounded text-xs">Watch Now</button>
+            <button
+              className="bg-green-600 text-white px-3 py-1 rounded text-xs"
+              onClick={() => handleWatchNow(video.id)}
+            >
+              Watch Now
+            </button>
             <span className="text-sm text-yellow-500">⭐ {video.rating}</span>
           </div>
         </div>
       ))}
     </div>
-  )
+  );
 }
