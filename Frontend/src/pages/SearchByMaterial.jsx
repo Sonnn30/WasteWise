@@ -1,28 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function SearchMaterial() {
   const location = useLocation();
   const materialType = location.state?.materialType || 'plastic';
+  const navigate = useNavigate();
 
   const [videos, setVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-useEffect(() => {
-  const fetchVideos = async () => {
-    try {
-      const response = await axios.get(`/api/videos?material=${materialType}`);
-      console.log('Video data:', response.data); // ⬅️ Tambahkan ini
-      const data = response.data;
-      setVideos(Array.isArray(data) ? data : []);
-    } catch (error) {
-      console.error('Error fetching videos:', error);
-      setVideos([]);
-    }
-  };
-  fetchVideos();
-}, [materialType]);
+  const [suggestions, setSuggestions] = useState([]);
 
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get(`/api/videos?material=${materialType}`);
+        const data = response.data;
+        setVideos(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+        setVideos([]);
+      }
+    };
+    fetchVideos();
+  }, [materialType]);
+
+  useEffect(() => {
+    if (searchQuery.trim() === '') {
+      setSuggestions([]);
+    } else {
+      const filteredVideos = videos
+        .filter((video) =>
+          video.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        .slice(0, 5);
+      setSuggestions(filteredVideos);
+    }
+  }, [searchQuery, videos]);
 
   const filteredVideos = videos.filter(video =>
     video.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -38,7 +52,7 @@ useEffect(() => {
         <div className="relative max-w-2xl">
           <input
             type="text"
-            placeholder={`Q ${materialType} `}
+            placeholder={`Search ${materialType} videos...`}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full py-3 pl-12 pr-4 rounded-full border-2 border-gray-300 focus:outline-none focus:border-green-500 text-lg shadow-sm"
@@ -57,6 +71,26 @@ useEffect(() => {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
+
+          {/* Dropdown suggestions */}
+          {suggestions.length > 0 && (
+            <ul className="absolute z-10 bg-white border border-gray-300 rounded-md w-full mt-1 shadow-lg">
+              {suggestions.map((video, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={`/watch/${video.id}`}
+                    onClick={() => {
+                      setSuggestions([]);
+                      setSearchQuery('');
+                    }}
+                    className="block px-4 py-2 hover:bg-green-100 text-gray-800"
+                  >
+                    {video.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
         <Link to="/search" className="text-green-700 hover:underline mt-4 inline-block text-lg font-semibold">
           &lt; Browse by Material
@@ -81,12 +115,14 @@ useEffect(() => {
                 <h3 className="text-md font-semibold text-gray-800 mb-1">{video.title}</h3>
                 <p className="text-xs text-gray-600 mb-3">Material: {video.material}</p>
                 <div className="flex items-center justify-between">
-                  <Link to={`/video/${video._id}`}>
+                  <Link to={`/watch/${video.id}`}>
                     <button className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition">
                       Watch Now
                     </button>
                   </Link>
-                  <span className="text-sm text-yellow-500 font-bold">⭐ {video.rating || '-'}</span>
+                  <span className="text-sm text-yellow-500 font-bold">
+                    ⭐ {video.rating?.toFixed(1) ?? '-'}
+                  </span>
                 </div>
               </div>
             </div>
